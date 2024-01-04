@@ -7,23 +7,19 @@
 
 import Foundation
 
-final class NetworkManager<T: Decodable> {
-    static func fetchData(url: String, compltion: @escaping (Result<T, NetworkError>)-> Void) {
-        
+class NetworkManager{
+    static func fetchData(url: String, completion: @escaping (_ courses: [HarryPotter])-> Void) {
         guard let url = URL(string: url) else { return }
         
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "Error")
-                return
-            }
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let person = try decoder.decode(T.self, from: data)
-                compltion(.success(person))
+                let course = try decoder.decode([HarryPotter].self, from: data)
+                completion(course)
             } catch let error {
-                print("Error \(error.localizedDescription)")
+                print(error)
             }
         }.resume()
     }
