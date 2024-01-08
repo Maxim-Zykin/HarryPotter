@@ -16,7 +16,7 @@ struct HarryPotter: Codable {
     let eyeColour: String?
     let hairColour: String?
     let patronus: String?
-    let image: URL?
+    let image: String?
 }
 enum Link: String {
     case API = "https://hp-api.onrender.com/api/characters"

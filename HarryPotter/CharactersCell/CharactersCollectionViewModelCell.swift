@@ -22,7 +22,8 @@ class CharactersCollectionViewModelCell: CharactersCollectionViewModelCellProtoc
     }
     
     var image: Data? {
-        ImageManageer.shared.fetchImage(from: characters.image)
+        let imageUrl = URL(string: characters.image!)
+        return ImageManageer.shared.fetchImage(from: imageUrl)
     }
     
     required init(characters: HarryPotter) {

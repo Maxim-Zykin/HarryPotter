@@ -20,8 +20,8 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     
     var image: UIImageView = {
         let image = UIImageView()
-        image.frame.size.width = 140
-        image.frame.size.height = 140
+        image.contentMode = .scaleAspectFill
+        image.layer.cornerRadius = 10
         image.image = UIImage(named: "noPhoto")
         return image
     }()
@@ -72,7 +72,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         name.translatesAutoresizingMaskIntoConstraints = false
-       //image.translatesAutoresizingMaskIntoConstraints = false
+        //image.translatesAutoresizingMaskIntoConstraints = false
         
         view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true

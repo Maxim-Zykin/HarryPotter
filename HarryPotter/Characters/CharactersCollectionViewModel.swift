@@ -31,21 +31,6 @@ class CharactersCollectionViewModel: CharactersCollectionViewModelProtocol{
             }
         }
 
-    
-//    func fetchCharacter(completion: @escaping () -> Void) {
-//        NetworkManager<Characters>.fetchData(url: url) { [weak self] (results) in
-//            guard let self = self else { return }
-//            switch results {
-//            case .success(let response):
-//                self.characters = response
-//                completion()
-//                print("Successful")
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
     func numberOfRows() -> Int {
         characters.count
     }

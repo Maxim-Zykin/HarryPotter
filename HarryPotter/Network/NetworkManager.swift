@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkManager{
-    static func fetchData(url: String, completion: @escaping (_ courses: [HarryPotter])-> Void) {
+    static func fetchData(url: String, completion: @escaping (_ persons: [HarryPotter])-> Void) {
         guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
@@ -16,8 +16,9 @@ class NetworkManager{
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let course = try decoder.decode([HarryPotter].self, from: data)
-                completion(course)
+                let person = try decoder.decode([HarryPotter].self, from: data)
+                completion(person)
+                print(person)
             } catch let error {
                 print(error)
             }
