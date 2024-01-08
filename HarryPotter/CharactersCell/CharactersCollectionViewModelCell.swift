@@ -9,7 +9,7 @@ import Foundation
 
 protocol CharactersCollectionViewModelCellProtocol {
     var name: String { get }
-    //var image: Data? { get }
+    var image: Data? { get }
     init(characters: HarryPotter)
 }
 
@@ -21,9 +21,9 @@ class CharactersCollectionViewModelCell: CharactersCollectionViewModelCellProtoc
         characters.name ?? ""
     }
     
-//    var image: Data? {
-//        ImageManageer.shared.fetchImage(from: characters.image)
-//    }
+    var image: Data? {
+        ImageManageer.shared.fetchImage(from: characters.image)
+    }
     
     required init(characters: HarryPotter) {
         self.characters = characters

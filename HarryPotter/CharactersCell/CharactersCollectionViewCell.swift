@@ -40,12 +40,12 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     var viewModel: CharactersCollectionViewModelCellProtocol! {
         didSet{
             self.name.text = viewModel.name
-//            DispatchQueue.global().async {
-//                guard let imageData = self.viewModel.image else { return }
-//                DispatchQueue.main.async {
-//                    self.image.image = UIImage(data: imageData)
-//                }
-//            }
+            DispatchQueue.global().async {
+                guard let imageData = self.viewModel.image else { return }
+                DispatchQueue.main.async {
+                    self.image.image = UIImage(data: imageData)
+                }
+            }
         }
     }
     
@@ -72,7 +72,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         name.translatesAutoresizingMaskIntoConstraints = false
-       // image.translatesAutoresizingMaskIntoConstraints = false
+       //image.translatesAutoresizingMaskIntoConstraints = false
         
         view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
