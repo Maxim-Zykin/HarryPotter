@@ -31,7 +31,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         label.text = ""
         label.textAlignment = .center
         label.textColor = .white
-        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.font = .systemFont(ofSize: 16, weight: .semibold)
         label.lineBreakMode = NSLineBreakMode.byCharWrapping
         label.numberOfLines = 0
         return label
@@ -39,7 +39,7 @@ class CharactersCollectionViewCell: UICollectionViewCell {
     
     var viewModel: CharactersCollectionViewModelCellProtocol! {
         didSet{
-            self.name.text = viewModel.name
+            self.name.text = viewModel.nickname
             DispatchQueue.global().async {
                 guard let imageData = self.viewModel.image else { return }
                 DispatchQueue.main.async {
@@ -72,7 +72,6 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         
         view.translatesAutoresizingMaskIntoConstraints = false
         name.translatesAutoresizingMaskIntoConstraints = false
-        //image.translatesAutoresizingMaskIntoConstraints = false
         
         view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
@@ -83,7 +82,6 @@ class CharactersCollectionViewCell: UICollectionViewCell {
         image.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 10).isActive = true
         image.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         image.heightAnchor.constraint(equalTo: heightAnchor).isActive = true
-
         
         name.topAnchor.constraint(equalTo: image.bottomAnchor, constant: 10).isActive = true
         name.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0).isActive = true

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CharactersCollectionViewModelCellProtocol {
-    var name: String { get }
+    var nickname: String { get }
     var image: Data? { get }
     init(characters: HarryPotter)
 }
@@ -17,8 +17,8 @@ class CharactersCollectionViewModelCell: CharactersCollectionViewModelCellProtoc
     
     private var characters: HarryPotter
     
-    var name: String {
-        characters.name ?? ""
+    var nickname: String {
+        characters.nickname ?? ""
     }
     
     var image: Data? {

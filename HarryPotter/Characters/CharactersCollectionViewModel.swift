@@ -18,7 +18,7 @@ protocol CharactersCollectionViewModelProtocol {
 
 class CharactersCollectionViewModel: CharactersCollectionViewModelProtocol{
     
-    private let url = "https://hp-api.onrender.com/api/characters"
+    private let url = "https://potterapi.onrender.com/en/characters"
     
     var characters = [HarryPotter]()
     
