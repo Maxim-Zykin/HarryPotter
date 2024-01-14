@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol DetailCharacterViewModelProtocol {
     var name: String? {get}
     var fullName: String? {get}
     var hogwartsHouse: String? {get}
     var image: Data? {get}
+    var hogwartsHouseImage: UIImage? {get}
     
     init(character: HarryPotter)
 }
@@ -24,6 +26,10 @@ class DetailCharacterViewModel: DetailCharacterViewModelProtocol {
     
     var hogwartsHouse: String? {
         "\(character.hogwartsHouse ?? "")"
+    }
+    
+    var hogwartsHouseImage: UIImage? {
+        UIImage(named: character.hogwartsHouse!)
     }
     
     var fullName: String? {

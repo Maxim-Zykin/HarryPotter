@@ -33,6 +33,14 @@ class DetailCharacterView: UIViewController {
         return image
     }()
     
+    var hogwartsHouseImage: UIImageView = {
+        var image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.layer.masksToBounds = true
+        return image
+    }()
+    
+    
     var fullName = CustomLabel(text: "", textAlignment: .center, size: 30, color: .white, font: .bold)
     
     var hogwartsHouse = CustomLabel(text: "", textAlignment: .center, size: 25, color: .white, font: .medium)
@@ -74,13 +82,15 @@ class DetailCharacterView: UIViewController {
         self.view.addSubview(imagePerson)
         self.view.addSubview(fullName)
         self.view.addSubview(hogwartsHouse)
+        self.view.addSubview(hogwartsHouseImage)
         
         imagePerson.translatesAutoresizingMaskIntoConstraints = false
         fullName.translatesAutoresizingMaskIntoConstraints = false
         hogwartsHouse.translatesAutoresizingMaskIntoConstraints = false
+        hogwartsHouseImage.translatesAutoresizingMaskIntoConstraints = false
     
         NSLayoutConstraint.activate([
-            imagePerson.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            imagePerson.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
             imagePerson.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             imagePerson.widthAnchor.constraint(equalToConstant: 290),
             imagePerson.heightAnchor.constraint(equalToConstant: 350),
@@ -88,11 +98,17 @@ class DetailCharacterView: UIViewController {
             fullName.topAnchor.constraint(equalTo: self.imagePerson.bottomAnchor, constant: 20),
             fullName.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             fullName.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+                        
+            hogwartsHouseImage.topAnchor.constraint(equalTo: self.fullName.bottomAnchor, constant: 20),
+            hogwartsHouseImage.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            hogwartsHouseImage.widthAnchor.constraint(equalToConstant: 150),
+            hogwartsHouseImage.heightAnchor.constraint(equalToConstant: 150),
             
-            hogwartsHouse.topAnchor.constraint(equalTo: self.fullName.bottomAnchor, constant: 10),
+            hogwartsHouse.topAnchor.constraint(equalTo: self.hogwartsHouseImage.bottomAnchor, constant: 10),
             hogwartsHouse.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             hogwartsHouse.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            hogwartsHouse.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20)
+            hogwartsHouse.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20),
+        
         ])
     }
 }
