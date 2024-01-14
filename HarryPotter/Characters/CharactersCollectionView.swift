@@ -28,7 +28,7 @@ class CharactersCollectionView: UIViewController {
         super.viewDidLoad()
         viewModel = CharactersCollectionViewModel()
         collectionView.dataSource = self
-        //collectionView.delegate = self
+        collectionView.delegate = self
         setupUI()
         setupNavigationBar()
     }
@@ -109,4 +109,23 @@ extension CharactersCollectionView: UICollectionViewDataSource {
         return cell
     }
     
+}
+
+extension CharactersCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detail = DetailCharacterView()
+        let info = viewModel.viewModelForSelectedRow(at: indexPath)
+        
+        DispatchQueue.global().async {
+            guard let imageData = info.image else { return }
+            DispatchQueue.main.async {
+                detail.imagePerson.image = UIImage(data: imageData)
+            }
+        }
+        
+        detail.fullName.text = info.fullName
+        detail.hogwartsHouse.text = info.hogwartsHouse
+        
+        navigationController?.pushViewController(detail, animated: true)
+    }
 }
