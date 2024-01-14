@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import AVFoundation
+
+var player: AVAudioPlayer?
 
 class CharactersCollectionView: UIViewController {
 
@@ -26,6 +29,7 @@ class CharactersCollectionView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MusicHelper.sharedHelper.playBackgroundMusic()
         viewModel = CharactersCollectionViewModel()
         collectionView.dataSource = self
         collectionView.delegate = self
