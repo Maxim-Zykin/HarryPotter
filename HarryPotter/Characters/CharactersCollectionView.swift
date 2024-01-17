@@ -17,11 +17,16 @@ class CharactersCollectionView: UIViewController {
     collectionViewLayout: makeLayout()
     )
     
+    var indicatorActivity = UIActivityIndicatorView(style: .large)
+    
     private var viewModel: CharactersCollectionViewModelProtocol!{
         didSet {
+            indicatorActivity.startAnimating()
             viewModel.fetchCharacter {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
+                    self.indicatorActivity.stopAnimating()
+                    self.indicatorActivity.isHidden = true
                 }
             }
         }
@@ -35,6 +40,7 @@ class CharactersCollectionView: UIViewController {
         collectionView.delegate = self
         setupUI()
         setupNavigationBar()
+        indicatorActivity.color = .white
     }
     
     private func setupNavigationBar() {
@@ -89,13 +95,18 @@ class CharactersCollectionView: UIViewController {
         )
         
         view.addSubview(collectionView)
+        view.addSubview(indicatorActivity)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        indicatorActivity.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            indicatorActivity.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            indicatorActivity.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
