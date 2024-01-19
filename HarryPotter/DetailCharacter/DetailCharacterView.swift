@@ -45,6 +45,8 @@ class DetailCharacterView: UIViewController {
     
     var hogwartsHouse = CustomLabel(text: "", textAlignment: .center, size: 25, color: .white, font: .medium)
     
+    var birthdate = CustomLabel(text: "", textAlignment: .center, size: 20, color: .white, font: .medium)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -83,11 +85,13 @@ class DetailCharacterView: UIViewController {
         self.view.addSubview(fullName)
         self.view.addSubview(hogwartsHouse)
         self.view.addSubview(hogwartsHouseImage)
+        self.view.addSubview(birthdate)
         
         imagePerson.translatesAutoresizingMaskIntoConstraints = false
         fullName.translatesAutoresizingMaskIntoConstraints = false
         hogwartsHouse.translatesAutoresizingMaskIntoConstraints = false
         hogwartsHouseImage.translatesAutoresizingMaskIntoConstraints = false
+        birthdate.translatesAutoresizingMaskIntoConstraints = false
     
         NSLayoutConstraint.activate([
             imagePerson.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 10),
@@ -107,8 +111,12 @@ class DetailCharacterView: UIViewController {
             hogwartsHouse.topAnchor.constraint(equalTo: self.hogwartsHouseImage.bottomAnchor, constant: 10),
             hogwartsHouse.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             hogwartsHouse.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            hogwartsHouse.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20),
+           // hogwartsHouse.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20),
         
+            birthdate.topAnchor.constraint(equalTo: self.hogwartsHouse.bottomAnchor, constant: 10),
+            birthdate.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            birthdate.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            birthdate.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -20),
         ])
     }
 }

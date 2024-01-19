@@ -14,6 +14,7 @@ protocol DetailCharacterViewModelProtocol {
     var hogwartsHouse: String? {get}
     var image: Data? {get}
     var hogwartsHouseImage: UIImage? {get}
+    var birthdate: String? {get}
     
     init(character: HarryPotter)
 }
@@ -39,6 +40,10 @@ class DetailCharacterViewModel: DetailCharacterViewModelProtocol {
     var image: Data? {
         let imageUrl = URL(string: character.image!)
         return ImageManageer.shared.fetchImage(from: imageUrl)
+    }
+    
+    var birthdate: String? {
+        "\(character.birthdate ?? "")"
     }
     
     private let character: HarryPotter

@@ -141,6 +141,7 @@ extension CharactersCollectionView: UICollectionViewDelegate {
         detail.fullName.text = info.fullName
         detail.hogwartsHouse.text = info.hogwartsHouse
         detail.hogwartsHouseImage.image = info.hogwartsHouseImage
+        detail.birthdate.text = info.birthdate
         
         navigationController?.pushViewController(detail, animated: true)
     }

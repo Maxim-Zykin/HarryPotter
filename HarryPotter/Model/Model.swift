@@ -12,6 +12,7 @@ struct HarryPotter: Codable {
     let fullName: String?
     let hogwartsHouse: String?
     let image: String?
+    let birthdate: String?
 }
 enum Link: String {
     case API = "https://hp-api.onrender.com/api/characters"
